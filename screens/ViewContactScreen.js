@@ -61,6 +61,22 @@ export default class ViewContactScreen extends React.Component {
       })
   };
 
+  smsAction = phone => {
+    let phoneNumber = phone;
+    phoneNumber = `sms:${phone}`
+    Linking.canOpenURL(phoneNumber)
+      .then( supported => {
+        if (!supported) {
+          Alert.alert("Phone number is not available")
+        } else {
+          return Linking.openURL(phoneNumber)
+        }
+      })
+      .catch( error => {
+        console.log(error)
+      })
+  }
+
   render() {
     return (
       <View style={styles.container}>
