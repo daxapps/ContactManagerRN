@@ -22,7 +22,7 @@ export default class ViewContactScreen extends React.Component {
 
   componentDidMount() {
     const { navigation }= this.props;
-    navigation.addListener("WillFocus", () => {
+    navigation.addListener("willFocus", () => {
       var key = this.props.navigation.getParam("key", "");
       this.getContact(key)
     });
